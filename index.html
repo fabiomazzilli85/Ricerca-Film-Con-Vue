@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>I Miei Flm</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div class="container">
+      <div id="app">
+          <div class="search-flex">
+            <h1>Ricerca Film</h1>
+            <input class="search-input" type="text" v-model="searchQuery" placeholder="Inserisci il titolo di un film...">
+          </div>
+          <div v-if="filmTrovato !== null">
+              <strong>Titolo:</strong> {{ filmTrovato.titolo }} <br>
+              <strong>Regia:</strong> {{ filmTrovato.regia }} <br>
+              <strong>Anno di produzione:</strong> {{ filmTrovato.anno }} <br>
+              <strong>Paese:</strong> {{ filmTrovato.paese }} <br>
+              <strong>Valutazione:</strong> {{ filmTrovato.valutazione }} <br>
+              <span v-if ="filmTrovato.valutazione === 10">Guardare questo film è un imperativo categorico.</span>
+              <span v-else-if="filmTrovato.valutazione >= 7 && filmTrovato.valutazione <= 9">Il film merita di essere visto, fidati...</span>
+              <span v-else-if="filmTrovato.valutazione >= 5 && filmTrovato.valutazione <= 6">Se non hai di meglio da fare, potresti guardare questo film.</span>
+              <span v-else>Lascia stare...</span>
+            </div>
+            <div v-else>
+
+            </div>
+
+          <ul>
+              <li v-for="(film, index) in films" :key="index">
+                  <strong>Titolo:</strong> {{ film.titolo }} <br>
+                  <strong>Regia:</strong> {{ film.regia }} <br>
+                  <strong>Anno di produzione:</strong> {{ film.anno }} <br>
+                  <strong>Paese:</strong> {{ film.paese }} <br>
+                  <strong>Valutazione:</strong> {{ film.valutazione }}
+              </li>
+            </ul>
+      </div>
+  </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
